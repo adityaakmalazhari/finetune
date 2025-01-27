@@ -2,7 +2,7 @@ CUDA_VISIBLE_DEVICES=0 python train_gpt_xtts.py \
 --output_path checkpoints/ \
 --metadatas datasets-1/metadata_train.csv,datasets-1/metadata_eval.csv,id \
 --num_epochs 10 \
---batch_size 16 \
+--batch_size 32 \
 --grad_acumm 4 \
 --max_text_length 400 \
 --max_audio_length 200000 \
