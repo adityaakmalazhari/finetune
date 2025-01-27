@@ -1,2 +1,3 @@
 checkpoints/
 datasets-1/
+./prepare_server.sh

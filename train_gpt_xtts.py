@@ -139,15 +139,12 @@ def train_gpt(
     TOKENIZER_FILE = os.path.join(
         CHECKPOINTS_OUT_PATH, os.path.basename(TOKENIZER_FILE_LINK)
     )  # vocab.json file
-    # XTTS_CHECKPOINT = os.path.join(
-    #     CHECKPOINTS_OUT_PATH, os.path.basename(XTTS_CHECKPOINT_LINK)
-    # )  # model.pth file
-    XTTS_CHECKPOINT = "checkpoints/GPT_XTTS_FT-January-26-2025_11+10AM-0000000/checkpoint_1000.pth"  # model.pth file
-
-    # XTTS_CONFIG_FILE = os.path.join(
-    #     CHECKPOINTS_OUT_PATH, os.path.basename(XTTS_CONFIG_LINK)
-    # )  # config.json file
-    XTTS_CONFIG_FILE = "checkpoints/GPT_XTTS_FT-January-26-2025_11+10AM-0000000/config.json"  # config.json file
+    XTTS_CHECKPOINT = os.path.join(
+        CHECKPOINTS_OUT_PATH, os.path.basename(XTTS_CHECKPOINT_LINK)
+    )  # model.pth file
+    XTTS_CONFIG_FILE = os.path.join(
+        CHECKPOINTS_OUT_PATH, os.path.basename(XTTS_CONFIG_LINK)
+    )  # config.json file
 
     # download XTTS v2.0 files if needed
     if not os.path.isfile(TOKENIZER_FILE):
@@ -246,7 +243,7 @@ def train_gpt(
     # init the trainer and 🚀
     trainer = Trainer(
         TrainerArgs(
-            restore_path="checkpoints/GPT_XTTS_FT-January-26-2025_11+10AM-0000000/checkpoint_1000.pth",  # xtts checkpoint is restored via xtts_checkpoint key so no need of restore it using Trainer restore_path parameter
+            restore_path=None,  # xtts checkpoint is restored via xtts_checkpoint key so no need of restore it using Trainer restore_path parameter
             skip_train_epoch=False,
             start_with_eval=START_WITH_EVAL,
             grad_accum_steps=GRAD_ACUMM_STEPS,
