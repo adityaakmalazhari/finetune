@@ -204,7 +204,7 @@ def train_gpt(
     config.logger_uri = LOGGER_URI
     config.audio = audio_config
     config.batch_size = BATCH_SIZE
-    config.num_loader_workers = 8
+    config.num_loader_workers = 4
     config.eval_split_max_size = 256
     config.print_step = 50
     config.plot_step = 100
