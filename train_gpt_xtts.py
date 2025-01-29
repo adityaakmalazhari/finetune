@@ -49,6 +49,7 @@ def create_xtts_trainer_parser():
     )
     parser.add_argument("--weight_decay", type=float, default=1e-2, help="Weight decay")
     parser.add_argument("--lr", type=float, default=5e-6, help="Learning rate")
+    parser.add_argument("--num_workers", type=int, default=8, help="Number CPU Workers")
     parser.add_argument("--save_step", type=int, default=5000, help="Save step")
 
     return parser
@@ -64,6 +65,7 @@ def train_gpt(
     max_text_length,
     lr,
     weight_decay,
+    num_workers,
     save_step,
 ):
     #  Logging parameters
@@ -204,7 +206,7 @@ def train_gpt(
     config.logger_uri = LOGGER_URI
     config.audio = audio_config
     config.batch_size = BATCH_SIZE
-    config.num_loader_workers = 4
+    config.num_loader_workers = num_workers
     config.eval_split_max_size = 256
     config.print_step = 50
     config.plot_step = 100
@@ -284,6 +286,7 @@ if __name__ == "__main__":
         lr=args.lr,
         max_text_length=args.max_text_length,
         max_audio_length=args.max_audio_length,
+        num_workers=args.num_workers,
         save_step=args.save_step,
     )
 
